@@ -6,9 +6,20 @@
 
 > 修改了 gulp-md5默认修改文件名的模式，模式为后缀名模式，可以通过 option 里的 mode 参数控制，默认为 `'suffix'`模式，即后缀名模式，如果需要文件名模式，将此参数设置为 `'filename'`即可。
 ## Example
+
+First, install `gulp-md5-soplus` as a development dependency:
+
+```shell
+npm install --save-dev gulp-md5-soplus
+```
+Then, add it to your `gulpfile.js`.
+
 ### Gulp code
 ```javascript
 //gulpfile.js task code example
+var md5 = require("gulp-md5-soplus");
+
+...
 
 gulp.task('MD5', function (cb) {
 	gulp.src([
@@ -20,22 +31,26 @@ gulp.task('MD5', function (cb) {
 		'./static/js/requirePaths.js'
 	], {
 		mappingFile: 'manifest.json'
-	}));
+	}))
+	.pipe(gulp.dest("./dist"));
 	cb();
 });
 ```
 
 ### Result
-```
+```shell
 //some file links in the watched file
+
 /lib/r.js
 /lib/petite-vue.0.3.0.umd.js
 ...
+
 
 // suffix mode ====>
 /lib/rx.js?v=2c4e5
 /lib/petite-vue.0.3.0.umd.js?v=80c6b
 ...
+
 
 // filename mode ====>
 /lib/rx_2c4e5.js
@@ -43,48 +58,6 @@ gulp.task('MD5', function (cb) {
 ...
 
 ```
-
-## Usage
-
-First, install `gulp-md5-soplus` as a development dependency:
-
-```shell
-npm install --save-dev gulp-md5-soplus
-```
-
-Then, add it to your `gulpfile.js`:
-
-```javascript
-var md5 = require("gulp-md5-soplus");
-
-gulp.src("./src/*.css")
-	.pipe(md5(10,'./output/index.html'))
-	.pipe(gulp.dest("./dist"));
-```
-
-md5 all css files in the src folder and change these css names in the quoted html--index.html
-
-```javascript
-
-gulp.task('img' ,function() {
-    var imgSrc = './static/img/**',
-        quoteSrc = './output/static/css/**/*.css', // [./output/static/css/**/*.css',./output/static/js/**/*.js']
-        imgDst = './output/static/img';
-
-    return gulp.src(imgSrc)
-        .pipe(imagemin())
-        .pipe(md5(10 ,quoteSrc))
-        .pipe(gulp.dest(imgDst));
-});
-
-
-```
-
-first, optimize all images in the img folder including all sub folders; then md5 all these images and change these images' names in the quoted css files ;
-
-
-####note
-the directory of the md5ed files in the imgDst folder is the same as that of original files in the imgSrc folder; and css files can refer the image file with the same name in different folder rightly;
 
 ## API
 
