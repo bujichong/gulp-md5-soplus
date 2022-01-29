@@ -1,0 +1,82 @@
+{
+  "_args": [
+    [
+      "gulp-md5-soplus@1.0.0",
+      "D:\\workspace_idea\\branches\\online\\ahis\\aier-his\\aier-ui-platform\\src\\main"
+    ]
+  ],
+  "_development": true,
+  "_from": "gulp-md5-soplus@1.0.0",
+  "_id": "gulp-md5-soplus@1.0.0",
+  "_inBundle": false,
+  "_integrity": "sha1-WG0jiGk5thAvCV+ZKRbR14hygtA=",
+  "_location": "/gulp-md5-plus",
+  "_phantomChildren": {
+    "brace-expansion": "1.1.11",
+    "clone-stats": "0.0.1",
+    "core-util-is": "1.0.2",
+    "escape-string-regexp": "1.0.5",
+    "get-stdin": "4.0.1",
+    "inflight": "1.0.6",
+    "inherits": "2.0.3",
+    "lodash._escapehtmlchar": "2.4.1",
+    "lodash._escapestringchar": "2.4.1",
+    "lodash._isnative": "2.4.1",
+    "lodash._reunescapedhtml": "2.4.1",
+    "lodash._shimkeys": "2.4.1",
+    "lodash.defaults": "2.4.1",
+    "lodash.isobject": "2.4.1",
+    "lodash.values": "2.4.1",
+    "meow": "3.7.0",
+    "multipipe": "0.1.2",
+    "once": "1.4.0"
+  },
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "gulp-md5-soplus@1.0.0",
+    "name": "gulp-md5-plus",
+    "escapedName": "gulp-md5-plus",
+    "rawSpec": "1.0.3",
+    "saveSpec": null,
+    "fetchSpec": "1.0.3"
+  },
+  "_requiredBy": [
+    "#DEV:/"
+  ],
+  "_resolved": "http://registry.npm.taobao.org/gulp-md5-plus/download/gulp-md5-plus-1.0.3.tgz",
+  "_spec": "1.0.3",
+  "_where": "D:\\workspace_idea\\branches\\online\\ahis\\aier-his\\aier-ui-platform\\src\\main",
+  "author": {
+    "name": "wpfpizicai"
+  },
+  "bugs": {
+    "url": "https://github.com/wpfpizicai/gulp-md5-plus/issues"
+  },
+  "dependencies": {
+    "glob": "^4.0.6",
+    "gulp-util": "~2.2.14",
+    "through2": "^0.4.1"
+  },
+  "description": "md5 the static file and change the names in the quoted html ",
+  "devDependencies": {
+    "jsonfile": "^2.4.0"
+  },
+  "email": "bujichongf@163.com",
+  "homepage": "https://github.com/wpfpizicai/gulp-md5-plus.git",
+  "keywords": [
+    "gulp",
+    "gulp-md5"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "name": "gulp-md5-plus",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wpfpizicai/gulp-md5-plus.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.0.3"
+}
