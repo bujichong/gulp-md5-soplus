@@ -12,7 +12,7 @@
   },
   "keywords": [
     "gulp",
-    "gulp-md5"
+    "gulp-md5",
     "gulp-md5-plus"
   ],
   "dependencies": {
