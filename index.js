@@ -12,6 +12,8 @@ module.exports = function (size, ifile, option) {
   option = option || {};
   var md5_mapping = {};
   var connector = option.connector || "_";
+  var mode = option.mode || 'suffix';//suffix | filename ，不指定为filename模式，默认后缀模式
+  var modeKey = option.modeKey || 'v';//suffix 模式下？后的key值
   return through.obj(function (file, enc, cb) {
 
     if (file.isStream()) {
@@ -35,15 +37,15 @@ module.exports = function (size, ifile, option) {
         }
         dir = path.dirname(dir);
 
-
-
-   //Change to version number mode
-    var idx = filename.indexOf("?");
-    if (idx >= 0) {
-      filename = filename.split("?")[0];
-    }
-    var md5_filename = filename + '?v=' + d;
-
+        var md5_filename;
+        if(mode=='filename'){
+          md5_filename = filename.split('.').map(function(item, i, arr){
+            return i == arr.length-2 ? item + connector + d : item;
+          }).join('.');
+        }else{//Change to version number mode
+          filename = filename.indexOf("?")>=0 ? filename.split("?")[0] : filename;
+          md5_filename = filename + '?' + modeKey + '=' + d;
+        }
 
     var levelDir = "";
     if (option.dirLevel) {
@@ -56,33 +58,12 @@ module.exports = function (size, ifile, option) {
     var l_md5_filename = path.posix.join(levelDir, md5_filename);
 
 
-    if (Object.prototype.toString.call(ifile) == "[object Array]") {
-
+    if (Object.prototype.toString.call(ifile) == "[object Array]") {//array
       ifile.forEach(function (i_ifile) {
-
-        i_ifile && glob(i_ifile, function (err, i_files) {
-
-          if (err) return console.log(err);
-
-
-          i_files.forEach(function (i_ilist) {
-            var result = fs.readFileSync(i_ilist, 'utf8').replace(new RegExp('/' + l_filename + '.*[\'|\"]', "g"), function (sfile_name) {
-              return "/" + l_md5_filename + "'";
-            });
-
-
-            fs.writeFileSync(i_ilist, result, 'utf8');
-          })
-        })
+        convertFile(mode,i_ifile,l_filename,l_md5_filename);
       })
-    } else {
-      ifile && glob(ifile, function (err, files) {
-        if (err) return console.log(err);
-        files.forEach(function (ilist) {
-          return "/" + l_md5_filename + "'";
-        });
-        fs.writeFileSync(ilist, result, 'utf8');
-      })
+    } else {//string
+      convertFile(mode,ifile,l_filename,l_md5_filename);
     }
 
     file.path = path.join(dir, md5_filename);
@@ -104,12 +85,32 @@ module.exports = function (size, ifile, option) {
     });
 };
 
+function convertFile(mode,file,filename,md5FileName){//转换函数
+  file && glob(file, function (err, files) {
+    if (err) return console.log(err);
+    files.forEach(function (ilist) {
+      var result = '';
+      if(mode == 'filename'){
+        result = fs.readFileSync(ilist,'utf8').replace(new RegExp('/' + filename + '[^a-zA-Z_0-9].*?' ,"g"), function(sfile_name){
+          return sfile_name.replace(filename,md5FileName);
+        });
+      }else{
+        result = fs.readFileSync(ilist, 'utf8').replace(new RegExp('/' + filename + '.*[\'|\"]', "g"), function (sfile_name) {
+          let y = sfile_name.substr(-1);
+          return "/" + md5FileName + y;
+        });
+      }
+      fs.writeFileSync(ilist, result, 'utf8');
+    })
+  })
+}
+
 function getLevelDir(dir, level) {
   var dirs = dir.split(pathsep);
   if (dirs && dirs.length >= level) {
     return dirs.slice(dirs.length - level)
   } else {
-    return ""
+        return []
   }
 }
 

@@ -80,6 +80,19 @@ Type: `Object`
 
 Default: null
 
+##### option.mode
+Type: `String`
+value: `'suffix' | 'filename'`
+
+Default: 'suffix'
+> Whether to use suffix mode or file name replacement mode, the default is suffix mode
+
+##### option.modeKey
+Type: `String`
+
+Default: 'v'
+> Default key value in suffix mode
+
 ##### option.dirLevel
 Type: `Number`
 
