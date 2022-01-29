@@ -1,6 +1,6 @@
 # gulp-md5-soplus
 
-> md5 plugin modify form gup-md5-plus[gulp](https://github.com/wpfpizicai/gulp-md5-plus) 
+> md5 plugin modify form gup-md5-plus[gulp](https://github.com/wpfpizicai/gulp-md5-plus) ,filename  md5 version code connected by `?` marks.
 ## Usage
 
 
