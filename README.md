@@ -4,7 +4,10 @@
 
 > Modified the default mode of gulp-md5 to modify the file name. It adopts the suffix name mode, which can be controlled by the mode parameter in the option. The default is `'suffix'` mode, that is, the suffix name mode. If you need the filename mode, set this parameter to `'filename'`.
 
-> 修改了 gulp-md5默认修改文件名的模式，模式为后缀名模式，可以通过 option 里的 mode 参数控制，默认为 `'suffix'`模式，即后缀名模式，如果需要文件名模式，将此参数设置为 `'filename'`即可。
+> 修改了 gulp-md5默认修改文件名的方式，改为后缀名模式，
+> 可以通过 option 里的 mode 参数控制，默认为 `'suffix'`模式，即后缀名模式，
+> 如果需要文件名模式，将此参数设置为 `'filename'`即可。
+
 ## Example
 
 First, install `gulp-md5-soplus` as a development dependency:
