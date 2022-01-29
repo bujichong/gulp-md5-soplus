@@ -1,6 +1,6 @@
 # gulp-md5-soplus
 
-> md5 plugin modify form gup-md5-plus[gulp](https://github.com/wpfpizicai/gulp-md5-plus) 
+> md5 plugin modify form [gup-md5-plus](https://github.com/wpfpizicai/gulp-md5-plus) 
 
 > Modified the default mode of gulp-md5 to modify the file name. It adopts the suffix name mode, which can be controlled by the mode parameter in the option. The default is `'suffix'` mode, that is, the suffix name mode. If you need the filename mode, set this parameter to `'filename'`.
 
