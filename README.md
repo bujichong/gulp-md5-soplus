@@ -1,9 +1,12 @@
 # gulp-md5-soplus
 
 > md5 plugin modify form gup-md5-plus[gulp](https://github.com/wpfpizicai/gulp-md5-plus) 
+
 > Modified the default mode of gulp-md5 to modify the file name. It adopts the suffix name mode, which can be controlled by the mode parameter in the option. The default is `'suffix'` mode, that is, the suffix name mode. If you need the filename mode, set this parameter to `'filename'`.
+
 > 修改了 gulp-md5默认修改文件名的模式，模式为后缀名模式，可以通过 option 里的 mode 参数控制，默认为 `'suffix'`模式，即后缀名模式，如果需要文件名模式，将此参数设置为 `'filename'`即可。
 ## Example
+### Gulp code
 ```javascript
 //gulpfile.js task code example
 
@@ -22,19 +25,20 @@ gulp.task('MD5', function (cb) {
 });
 ```
 
+### Result
 ```
 /lib/r.js
 /lib/petite-vue.0.3.0.umd.js
 ...
 
 // suffix mode
-//====>
+====>
 /lib/rx.js?v=2c4e5
 /lib/petite-vue.0.3.0.umd.js?v=80c6b
 ...
 
 // filename mode
-//====>
+====>
 /lib/rx_2c4e5.js
 /lib/petite-vue.0.3.0.umd_80c6b.js
 ...
