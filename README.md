@@ -27,18 +27,17 @@ gulp.task('MD5', function (cb) {
 
 ### Result
 ```
+//some file links in the watched file
 /lib/r.js
 /lib/petite-vue.0.3.0.umd.js
 ...
 
-// suffix mode
-====>
+// suffix mode ====>
 /lib/rx.js?v=2c4e5
 /lib/petite-vue.0.3.0.umd.js?v=80c6b
 ...
 
-// filename mode
-====>
+// filename mode ====>
 /lib/rx_2c4e5.js
 /lib/petite-vue.0.3.0.umd_80c6b.js
 ...
