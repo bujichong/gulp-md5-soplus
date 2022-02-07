@@ -73,7 +73,7 @@ module.exports = function (size, ifile, option) {
     }, function (cb) {
         if(option.mappingFile){
             try{
-                md5_mapping = Object.assign(md5_mapping, jsonfile.readFileSync(option.mappingFile))
+                md5_mapping = Object.assign(jsonfile.readFileSync(option.mappingFile),md5_mapping)
             }catch(err){
                 fs.writeFileSync(option.mappingFile,"{}",'utf8');
             }
