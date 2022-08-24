@@ -128,6 +128,12 @@ Default: `_`
 > used to set the output file‘s connector; if use `.` the outfile will look like `imgfile.5546983ac2.png` ,while default is `imgfile_5546983ac2.png` 
 
 
+#### option.timeStrFiles
+Type: `Array`
+Default: `[]`
+>the item which in this array will be versoned by current time string instead of md5 string.
+
+
 ##### option.mappingFile
 Type: `String`
 
