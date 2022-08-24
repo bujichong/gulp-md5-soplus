@@ -131,7 +131,7 @@ Default: `_`
 #### option.timeStrFiles
 Type: `Array`
 Default: `[]`
->the item which in this array will be versoned by current time string instead of md5 string.
+>the item which in this array will be versioned by current time string instead of md5 string.
 
 
 ##### option.mappingFile
