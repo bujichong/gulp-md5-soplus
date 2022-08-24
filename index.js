@@ -12,6 +12,7 @@ module.exports = function (size, ifile, option) {
   option = option || {};
   var md5_mapping = {};
   var connector = option.connector || "_";
+  var timeStrFiles = option.timeStrFiles || [];
   var mode = option.mode || 'suffix';//suffix | filename ，不指定为filename模式，默认后缀模式
   var modeKey = option.modeKey || 'v';//suffix 模式下？后的key值
   return through.obj(function (file, enc, cb) {
@@ -30,6 +31,7 @@ module.exports = function (size, ifile, option) {
         , relativepath = path.relative(file.base ,file.path)
         , sub_namepath = relativepath.replace(new RegExp(filename) , "").split(pathsep).join('/')
         , dir;
+        var teimStr = new Date().getTime();
         if(file.path[0] == '.'){
             dir = path.join(file.base, file.path);
         } else {
@@ -38,13 +40,14 @@ module.exports = function (size, ifile, option) {
         dir = path.dirname(dir);
 
         var md5_filename;
+        var verNum = timeStrFiles.includes(filename)? new Date().getTime():d;
         if(mode=='filename'){
           md5_filename = filename.split('.').map(function(item, i, arr){
-            return i == arr.length-2 ? item + connector + d : item;
+            return i == arr.length-2 ? item + connector + verNum : item;
           }).join('.');
         }else{//Change to version number mode
           filename = filename.indexOf("?")>=0 ? filename.split("?")[0] : filename;
-          md5_filename = filename + '?' + modeKey + '=' + d;
+          md5_filename = filename + '?' + modeKey + '=' + verNum;
         }
 
     var levelDir = "";
@@ -59,6 +62,7 @@ module.exports = function (size, ifile, option) {
 
 
     if (Object.prototype.toString.call(ifile) == "[object Array]") {//array
+
       ifile.forEach(function (i_ifile) {
         convertFile(mode,i_ifile,l_filename,l_md5_filename);
       })
