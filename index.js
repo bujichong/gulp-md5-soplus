@@ -12,7 +12,8 @@ module.exports = function (size, ifile, option) {
   option = option || {};
   var md5_mapping = {};
   var connector = option.connector || "_";
-  var timeStrFiles = option.timeStrFiles || [];
+  var specVerStrFiles = option.specVerStrFiles || [];//需要特殊字符串版本号的文件列表
+  var specVerStr = option.specVerStr || new Date().getTime();//默认用时间戳为版本号
   var mode = option.mode || 'suffix';//suffix | filename ，不指定为filename模式，默认后缀模式
   var modeKey = option.modeKey || 'v';//suffix 模式下？后的key值
   return through.obj(function (file, enc, cb) {
@@ -31,7 +32,6 @@ module.exports = function (size, ifile, option) {
         , relativepath = path.relative(file.base ,file.path)
         , sub_namepath = relativepath.replace(new RegExp(filename) , "").split(pathsep).join('/')
         , dir;
-        var teimStr = new Date().getTime();
         if(file.path[0] == '.'){
             dir = path.join(file.base, file.path);
         } else {
@@ -40,7 +40,7 @@ module.exports = function (size, ifile, option) {
         dir = path.dirname(dir);
 
         var md5_filename;
-        var verNum = timeStrFiles.includes(filename)? new Date().getTime():d;
+        var verNum = specVerStrFiles.includes(filename)? specVerStr : d;
         if(mode=='filename'){
           md5_filename = filename.split('.').map(function(item, i, arr){
             return i == arr.length-2 ? item + connector + verNum : item;

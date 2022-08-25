@@ -128,11 +128,17 @@ Default: `_`
 > used to set the output file‘s connector; if use `.` the outfile will look like `imgfile.5546983ac2.png` ,while default is `imgfile_5546983ac2.png` 
 
 
-#### option.timeStrFiles
+#### option.specVerStrFiles
 Type: `Array`
 Default: `[]`
->the item which in this array will be versioned by current time string instead of md5 string.
+>the item which in this array will be versioned by special string(option.specVerStr) instead of md5 string.
+> 需要打特殊字符串(option.specVerStr)版本号的文件名列表 ，如 ['bundle.js','base.css']
 
+#### option.specVerStr
+Type: String
+Default: ``
+>the special string,if it's empty ,it will be current time string as defualt value.
+> 特殊字符串，默认空，当为空时，取值为当前时间戳字符串。
 
 ##### option.mappingFile
 Type: `String`
